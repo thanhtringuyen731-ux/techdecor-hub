@@ -5,7 +5,7 @@ const PRODUCTS = [
         category: "keyboard", 
         price: 1890000, 
         description: "Bàn phím cơ không dây chuyên nghiệp với Gateron Brown switches, hỗ trợ kết nối Bluetooth 5.1 và USB-C.",
-        image: "../images/products/keyboard1.jpg", 
+        image: "images/products/keyboard1.jpg", 
         specs: {
                 "Switch": "Gateron Brown (Hot-swappable)",
                 "Layout": "75% (84 keys)",
@@ -20,7 +20,7 @@ const PRODUCTS = [
         category: "keyboard",
         price: 690000,
         description: "Bàn phím cơ Leaven K68 thiết kế nhỏ gọn 68 phím, switch cơ học bền bỉ, LED Rainbow nổi bật, phù hợp game và làm việc.",
-        image: "../images/products/keyboard2.jpg",
+        image: "images/products/keyboard2.jpg",
         specs: {
             "Switch": "Blue / Red Switch cơ học",
             "Layout": "68 phím (Compact 65%)",
@@ -37,7 +37,7 @@ const PRODUCTS = [
         category: "monitor",
         price: 11500000,
         description: "Màn hình Dell UltraSharp 27 inch độ phân giải 4K UHD, tấm nền IPS cao cấp, màu sắc chuẩn xác, phù hợp thiết kế đồ họa và làm việc chuyên nghiệp.",
-        image: "../images/products/monitor1.jpg",
+        image: "images/products/monitor1.jpg",
         specs: {
             "Kích thước": "27 inch",
             "Độ phân giải": "3840 x 2160 (4K UHD)",
@@ -55,7 +55,7 @@ const PRODUCTS = [
         category: "monitor",
         price: 12900000,
         description: "Màn hình gaming LG UltraGear 34 inch cong siêu rộng, độ phân giải WQHD, tần số quét 144Hz, hỗ trợ G-Sync và FreeSync Premium cho trải nghiệm mượt mà.",
-        image: "../images/products/monitor2.jpg",
+        image: "images/products/monitor2.jpg",
         specs: {
             "Kích thước": "34 inch (Cong 1900R)",
             "Độ phân giải": "3440 x 1440 (WQHD)",
@@ -73,7 +73,7 @@ const PRODUCTS = [
         category: "chair",
         price: 4990000,
         description: "Ghế công thái học Ergonomic 07 thiết kế hiện đại, hỗ trợ cột sống và thắt lưng tối ưu, chất liệu lưới thoáng khí phù hợp làm việc lâu dài.",
-        image: "../images/products/chair1.jpg",
+        image: "images/products/chair1.jpg",
         specs: {
             "Chất liệu": "Lưới cao cấp + Khung thép sơn tĩnh điện",
             "Kích thước": "W 66cm x D 70cm x H 115–125cm",
@@ -90,7 +90,7 @@ const PRODUCTS = [
         category: "chair",
         price: 5490000,
         description: "Ghế gaming Corsair T3 Rush thiết kế phong cách thể thao, đệm mút cao cấp bọc vải thoáng khí, hỗ trợ ngồi lâu khi chơi game và làm việc.",
-        image: "../images/products/chair2.jpg",
+        image: "images/products/chair2.jpg",
         specs: {
             "Chất liệu": "Vải mềm thoáng khí + Khung thép",
             "Tựa lưng": "Ngả 90°–180°",
@@ -107,7 +107,7 @@ const PRODUCTS = [
         category: "mouse",
         price: 2190000,
         description: "Chuột gaming không dây Logitech G Pro X Superlight siêu nhẹ, cảm biến HERO 25K chính xác cao, thiết kế tối ưu cho game thủ chuyên nghiệp.",
-        image: "../images/products/mouse1.jpg",
+        image: "images/products/mouse1.jpg",
         specs: {
             "Cảm biến": "HERO 25K",
             "DPI": "100 – 25.600 DPI",
@@ -124,7 +124,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 490000,
         description: "Pad chuột Razer Gigantus V2 bề mặt vải micro-weave tối ưu cho tốc độ và kiểm soát, đế cao su chống trượt, phù hợp game thủ và làm việc văn phòng.",
-        image: "../images/products/mouse2.jpg",
+        image: "images/products/mouse2.jpg",
         specs: {
             "Kích thước": "450 x 400 x 3 mm (Size Large)",
             "Chất liệu bề mặt": "Micro-weave cloth",
@@ -140,7 +140,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 1890000,
         description: "Đèn BenQ ScreenBar Plus thiết kế kẹp màn hình thông minh, chiếu sáng không gây chói, có núm điều khiển rời điều chỉnh độ sáng và nhiệt độ màu linh hoạt.",
-        image: "../images/products/accessory1.jpg",
+        image: "images/products/accessory1.jpg",
         specs: {
             "Công suất": "5W",
             "Nhiệt độ màu": "2700K – 6500K",
@@ -157,7 +157,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 850000,
         description: "Arm màn hình NB F80 thiết kế công thái học, hỗ trợ nâng hạ linh hoạt, xoay 360°, giúp tối ưu không gian bàn làm việc và cải thiện tư thế ngồi.",
-        image: "../images/products/accessory2.jpg",
+        image: "images/products/accessory2.jpg",
         specs: {
             "Kích thước màn hình hỗ trợ": "17\" – 30\"",
             "Tải trọng": "2kg – 9kg",
@@ -174,7 +174,7 @@ const PRODUCTS = [
         category: "keyboard",
         price: 1490000,
         description: "Bàn phím cơ AULA F75 layout 75% nhỏ gọn, hỗ trợ kết nối 3 chế độ (Bluetooth, 2.4G Wireless, USB-C), LED RGB nổi bật, phù hợp làm việc và gaming.",
-        image: "../images/products/aulaf75.jpg",
+        image: "images/products/aulaf75.jpg",
         specs: {
             "Switch": "AULA Reaper / Graywood (Hot-swappable)",
             "Layout": "75% (81 phím)",
@@ -191,7 +191,7 @@ const PRODUCTS = [
         category: "monitor",
         price: 4990000,
         description: "Màn hình gaming ASUS TUF VG27AQ5A 27 inch độ phân giải QHD, tần số quét 170Hz, tấm nền IPS cho màu sắc sống động và chuyển động mượt mà, phù hợp game thủ chuyên nghiệp.",
-        image: "../images/products/manasus.jpg",
+        image: "images/products/manasus.jpg",
         specs: {
             "Kích thước": "27 inch",
             "Độ phân giải": "2560 x 1440 (QHD)",
@@ -209,7 +209,7 @@ const PRODUCTS = [
         category: "chair",
         price: 1500000,
         description: "Ghế Gaming CHAHO Y55 màu đen thiết kế thể thao hiện đại, đệm mút dày êm ái, hỗ trợ ngồi lâu khi chơi game hoặc làm việc.",
-        image: "../images/products/ghegaming.jpg",
+        image: "images/products/ghegaming.jpg",
         specs: {
             "Chất liệu": "Da PU cao cấp + Khung thép",
             "Tựa lưng": "Ngả 90° – 135°",
@@ -226,7 +226,7 @@ const PRODUCTS = [
         category: "mouse",
         price: 499000,
         description: "Chuột không dây TEKKIN INPHIC PM6 thiết kế công thái học, kết nối kép 2.4G Wireless và Bluetooth, pin sạc tiện lợi, phù hợp làm việc và học tập.",
-        image: "../images/products/chuotPM6.jpg",
+        image: "images/products/chuotPM6.jpg",
         specs: {
             "DPI": "800 / 1200 / 1600 / 2400",
             "Kết nối": "2.4G Wireless + Bluetooth 5.0",
@@ -242,7 +242,7 @@ const PRODUCTS = [
         category: "mouse",
         price: 799000,
         description: "Chuột Silent Gaming Atas F30 thiết kế gọn nhẹ, nút bấm êm không gây tiếng ồn, DPI điều chỉnh linh hoạt, phù hợp chơi game và làm việc văn phòng.",
-        image: "../images/products/chuotf30.jpg",
+        image: "images/products/chuotf30.jpg",
         specs: {
             "DPI": "800 / 1200 / 1600 / 2400",
             "Kết nối": "USB Wired",
@@ -259,7 +259,7 @@ const PRODUCTS = [
         category: "headphone",
         price: 540000,
         description: "Tai nghe Gaming Hoco W113 thiết kế chụp tai thoải mái, âm thanh stereo sống động, micro chống ồn, phù hợp chơi game và giải trí.",
-        image: "../images/products/tainghe.jpg",
+        image: "images/products/tainghe.jpg",
         specs: {
             "Driver": "50mm",
             "Kết nối": "Jack 3.5mm",
@@ -276,7 +276,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 320000,
         description: "Hub USB-C 8 trong 1 mở rộng cổng kết nối cho laptop, tích hợp HDMI, USB 3.0, khe thẻ nhớ và sạc PD, phù hợp làm việc văn phòng và setup đa màn hình.",
-        image: "../images/products/hub.jpg",
+        image: "images/products/hub.jpg",
         specs: {
             "Cổng HDMI": "4K @30Hz",
             "USB": "3 x USB 3.0",
@@ -293,7 +293,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 100000,
         description: "Đầu nối cổng HDMI hỗ trợ truyền tín hiệu hình ảnh và âm thanh chất lượng cao, thiết kế nhỏ gọn, tiện lợi khi kết nối màn hình, TV hoặc máy chiếu.",
-        image: "../images/products/hdmi.jpg",
+        image: "images/products/hdmi.jpg",
         specs: {
             "Chuẩn HDMI": "HDMI 2.0",
             "Độ phân giải hỗ trợ": "4K @60Hz",
@@ -309,7 +309,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 382000,
         description: "Ổ cắm điện đa năng Deli thiết kế an toàn, tích hợp nhiều cổng cắm và cổng USB sạc nhanh, phù hợp cho setup bàn làm việc và gaming.",
-        image: "../images/products/odien.jpg",
+        image: "images/products/odien.jpg",
         specs: {
             "Số ổ cắm": "4 – 6 ổ (tùy phiên bản)",
             "Cổng USB": "2 x USB 5V",
@@ -326,7 +326,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 400000,
         description: "Giá kê chân văn phòng thiết kế công thái học giúp cải thiện tư thế ngồi, giảm áp lực lên lưng và chân khi làm việc lâu dài.",
-        image: "../images/products/gacchan.jpg",
+        image: "images/products/gacchan.jpg",
         specs: {
             "Chất liệu": "Nhựa ABS cao cấp + Đế chống trượt",
             "Kích thước": "450 x 330 x 110 mm",
@@ -342,7 +342,7 @@ const PRODUCTS = [
         category: "accessory",
         price: 100000,
         description: "Đèn LED trang trí RGB tạo hiệu ứng ánh sáng sinh động cho góc setup gaming và làm việc, dễ dàng điều chỉnh màu sắc và chế độ sáng.",
-        image: "../images/products/led.jpg",
+        image: "images/products/led.jpg",
         specs: {
             "Chiều dài": "5 mét",
             "Màu sắc": "RGB 16 triệu màu",
