@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "email": "user@example.com",
+    "password": "user123",
+    "name": "Nguyễn Văn A",
+    "phone": "0987654321",
+    "createdAt": "2024-01-01"
+  },
+  {
+    "id": 2,
+    "email": "admin@techdecor.vn",
+    "password": "admin123",
+    "name": "Admin User",
+    "phone": "0909123456",
+    "role": "admin",
+    "createdAt": "2024-01-01"
+  }
+]

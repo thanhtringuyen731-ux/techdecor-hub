@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng - TechDecor Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #6366f1; }
+        body { 
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f5f3ff); 
+            margin: 0; 
+            padding: 20px; 
+            min-height: 100vh;
+        }
+        .cart-wrapper { max-width: 900px; margin: 40px auto; display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+        .cart-list { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .cart-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
+        .cart-item img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; background: #f8fafc; }
+        .qty-btn { background: #f1f5f9; border: none; width: 30px; height: 30px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        .qty-btn:hover { background: #e2e8f0; }
+        
+        .summary { background: white; padding: 25px; border-radius: 20px; height: fit-content; box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15); position: sticky; top: 20px; }
+        .checkout-btn { 
+            background: linear-gradient(135deg, #6366f1, #8b5cf6); 
+            color: white; border: none; width: 100%; padding: 15px; 
+            border-radius: 12px; font-weight: bold; cursor: pointer; 
+            margin-top: 20px; transition: 0.3s;
+        }
+        .checkout-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4); opacity: 0.9; }
+        .checkout-btn:active { transform: translateY(-1px); }
+
+        @media (max-width: 768px) {
+            .cart-wrapper { grid-template-columns: 1fr; }
+        }
+        .toast-msg {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        animation: slideUp 0.5s ease-out;
+    }
+    @keyframes slideUp {
+        from { bottom: -50px; opacity: 0; }
+        to { bottom: 20px; opacity: 1; }
+    }
+    </style>
+</head>
+<body>
+    <div style="max-width:900px; margin:0 auto;">
+        <a href="products.html" style="text-decoration: none; color: var(--primary); font-weight: 600;">
+            <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+        </a>
+    </div>
+    
+    <div class="cart-wrapper">
+        <div class="cart-list" id="cartContainer">
+            <h2>Giỏ hàng của bạn</h2>
+            <div id="itemList"></div>
+        </div>
+
+        <div class="summary">
+            <h3>Tổng thanh toán</h3>
+            <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                <span>Tạm tính:</span> <span id="subtotal">0 ₫</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                <span>Phí vận chuyển:</span> <span>30.000 ₫</span>
+            </div>
+            <hr style="border: none; border-top: 1px solid #f1f5f9;">
+            <div style="display: flex; justify-content: space-between; font-weight: 800; color: var(--primary); font-size: 1.2rem; margin-top: 15px;">
+                <span>Tổng cộng:</span> <span id="totalPrice">0 ₫</span>
+            </div>
+            
+            <button class="checkout-btn" onclick="goToCheckout()">THANH TOÁN NGAY</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Hàm hiển thị giỏ hàng
+        function renderCartPage() {
+            const cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+            const container = document.getElementById('itemList');
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:40px;">
+                        <i class="fas fa-shopping-basket fa-3x" style="color:#e2e8f0; margin-bottom:15px;"></i>
+                        <p>Giỏ hàng đang trống!</p>
+                    </div>`;
+                document.getElementById('subtotal').innerText = "0 ₫";
+                document.getElementById('totalPrice').innerText = "0 ₫";
+                return;
+            }
+
+            container.innerHTML = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="cart-item">
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <img src="${item.image || 'https://via.placeholder.com/80'}" alt="">
+                            <div>
+                                <h4 style="margin:0">${item.name}</h4>
+                                <p style="color:var(--primary); font-weight:bold; margin:5px 0;">${item.price.toLocaleString()} ₫</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <button class="qty-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                                <span style="font-weight:600; min-width:20px; text-align:center">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                            </div>
+                            <button onclick="removeFromCart('${item.id}')" style="border:none; background:none; color:#ef4444; cursor:pointer; font-size:1.1rem;">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('subtotal').innerText = subtotal.toLocaleString() + " ₫";
+            document.getElementById('totalPrice').innerText = (subtotal + 30000).toLocaleString() + " ₫";
+        }
+
+        // 2. Hàm cập nhật số lượng
+        function updateQuantity(id, change) {
+            let cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+            const itemIndex = cart.findIndex(item => item.id == id);
+            
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += change;
+                if (cart[itemIndex].quantity < 1) cart[itemIndex].quantity = 1;
+                localStorage.setItem('techdecor_cart', JSON.stringify(cart));
+                renderCartPage();
+            }
+        }
+
+        // 3. Hàm xóa sản phẩm
+        function removeFromCart(id) {
+            let cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+            cart = cart.filter(item => item.id != id);
+            localStorage.setItem('techdecor_cart', JSON.stringify(cart));
+            renderCartPage();
+
+            // Tạo thông báo nhỏ
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.innerText = 'Đã xóa sản phẩm khỏi giỏ hàng';
+            document.body.appendChild(toast);
+            
+            // Tự biến mất sau 2 giây
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        // 4. QUAN TRỌNG: Hàm chuyển sang trang thanh toán
+        function goToCheckout() {
+            const cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+            
+            if (cart.length === 0) {
+                alert("Giỏ hàng của bạn đang trống!");
+                return;
+            }
+
+            // Kiểm tra đăng nhập (nếu cần)
+            const user = localStorage.getItem('currentUser');
+            if (!user) {
+                if (confirm("Bạn cần đăng nhập để thanh toán. Đi tới trang đăng nhập?")) {
+                    window.location.href = 'login.html';
+                }
+                return;
+            }
+
+            // Chuyển hướng
+            window.location.href = 'checkout.html';
+        }
+
+        // Chạy khi trang load
+        renderCartPage();
+    </script>
+</body>
+</html>

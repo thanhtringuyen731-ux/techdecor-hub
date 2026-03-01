@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - TechDecor Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --radius: 16px;
+        }
+
+        /* Hero Section Nâng Cấp */
+        .about-hero {
+            position: relative;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9)), 
+                        url('images/banners/about-bg.jpg') center/cover;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) { text-align: right; padding-right: 40px; }
+        .timeline-item:nth-child(even) { text-align: left; padding-left: 40px; margin-left: auto; }
+
+        .timeline-dot {
+            position: absolute;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border: 4px solid white;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
+
+        /* Team Card Nâng Cấp */
+        .team-member {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #f1f5f9;
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: 4px solid #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: var(--dark);
+            margin: 0 5px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* Stats Section */
+        .stat-item {
+            transition: 0.3s;
+            cursor: default;
+        }
+        .stat-item:hover { transform: scale(1.05); }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cube"></i>
+                    <span>TechDecor Hub</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li class="dropdown">
+                        <a href="#">Danh mục <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="products.html?category=keyboard">⌨️ Bàn phím cơ</a>
+                            <a href="products.html?category=monitor">🖥️ Màn hình</a>
+                            <a href="products.html?category=mouse">🖱️ Chuột</a>
+                            <a href="products.html?category=chair">💺 Ghế</a>
+                            <a href="products.html?category=accessory">🔌 Phụ kiện</a>
+                        </div>
+                    </li>
+                    <li><a href="about.html" class="active">Giới thiệu</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-outline">Đăng nhập</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container" data-aos="zoom-out">
+            <h1>Kiến Tạo Không Gian <br> Đổi Mới Tư Duy</h1>
+            <p style="font-size: 1.4rem; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                TechDecor Hub - Đối tác tin cậy trong hành trình nâng tầm trải nghiệm làm việc và giải trí chuyên nghiệp.
+            </p>
+        </div>
+    </section>
+
+        <section class="section-box" data-aos="fade-up">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">
+                <i class="fas fa-history"></i> Hành Trình Phát Triển
+            </h2>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>2024: Khởi Đầu</h4>
+                        <p>Bắt đầu từ một cửa hàng nhỏ chuyên cung cấp phụ kiện setup tại TP.HCM.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>2025: Mở Rộng</h4>
+                        <p>Hợp tác chính thức với các thương hiệu lớn như Keychron, Dell, LG.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>2026: Đột Phá</h4>
+                        <p>Ra mắt nền tảng TechDecor Hub v2.0 với trải nghiệm mua sắm thông minh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="section-box" data-aos="fade-up">
+    <div class="container"> 
+        
+        <h2 style="text-align: center; margin-bottom: 3rem;">Giá Trị Cốt Lõi</h2>
+        
+        <div class="values-grid">
+            <div class="value-card" data-aos="flip-left" data-aos-delay="100">
+                <div class="value-icon"><i class="fas fa-heart"></i></div>
+                <h3>Tận Tâm</h3>
+                <p>Mỗi không gian setup là một tác phẩm nghệ thuật chúng tôi chăm chút.</p>
+            </div>
+            
+            <div class="value-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Chất Lượng</h3>
+                <p>Cam kết 100% hàng chính hãng với chính sách bảo hành dài hạn.</p>
+            </div>
+            
+            <div class="value-card" data-aos="flip-left" data-aos-delay="300">
+                <div class="value-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Sáng Tạo</h3>
+                <p>Luôn cập nhật những xu hướng setup mới nhất trên thế giới.</p>
+            </div>
+        </div>
+
+    </div> </section>
+
+        <section class="section-box" data-aos="fade-up">
+        <div class="container">
+            <div class="stats-container">
+                
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="5000">5000+</div>
+                    <p>Khách hàng tin dùng</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="1500">1500+</div>
+                    <p>Dự án hoàn thiện</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="24">24/7</div>
+                    <p>Giờ hỗ trợ/ngày</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+        <section class="section-box" data-aos="fade-up">
+    <div class="container"> 
+        
+        <h2 style="text-align: center; margin-bottom: 3rem;">Đội Ngũ Chuyên Gia</h2>
+        
+        <div class="team-grid"> 
+            
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
+                <div class="member-avatar"><i class="fas fa-user-tie"></i></div>
+                <h3>Nguyễn Minh Anh</h3>
+                <p class="role">CEO & Setup Stylist</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
+                <div class="member-avatar"><i class="fas fa-laptop-code"></i></div>
+                <h3>Trần Quốc Bảo</h3>
+                <p class="role">CTO & Tech Expert</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+        </div> </div> </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Hiệu ứng số chạy
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Kích hoạt số chạy khi cuộn đến
+        let started = false;
+        window.onscroll = function() {
+            if (window.scrollY > 1200 && !started) {
+                startCounters();
+                started = true;
+            }
+        };
+
+        // Giỏ hàng
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = total;
+        });
+    </script>
+</body>
+</html>

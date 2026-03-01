@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - TechDecor Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cube"></i>
+                    <span>TechDecor Hub</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li class="dropdown">
+                        <a href="#">Danh mục ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="products.html?category=keyboard">⌨️ Bàn phím cơ</a>
+                            <a href="products.html?category=monitor">🖥️ Màn hình</a>
+                            <a href="products.html?category=mouse">🖱️ Chuột</a>
+                            <a href="products.html?category=chair">💺 Ghế</a>
+                            <a href="products.html?category=accessory">🔌 Phụ kiện</a>
+                        </div>
+                    </li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="products.html" style="display: inline-flex; align-items: center; gap: 0.5rem; margin: 2rem 0; color: var(--primary); text-decoration: none;">
+            <i class="fas fa-arrow-left"></i> Quay lại sản phẩm
+        </a>
+        
+        <div id="productDetail">
+            <!-- Chi tiết sản phẩm sẽ được load bằng JS -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">&copy; 2026 TechDecor Hub</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // 1. Cập nhật số lượng giỏ hàng ngay khi vừa vào trang
+                if (typeof updateCartIcon === 'function') {
+                    updateCartIcon();
+                }
+
+                const urlParams = new URLSearchParams(window.location.search);
+                // Lấy ID từ localStorage nếu trên URL không có (để khớp với trang chủ)
+                const productId = urlParams.get('id') || localStorage.getItem('selectedProductId') || 1;
+                
+            const products = [
+                {
+                    id: 1,
+                    name: "Bàn phím cơ Keychron K8 Pro",
+                    category: "keyboard",
+                    price: 1890000,
+                    description: "Bàn phím cơ không dây chuyên nghiệp với Gateron Brown switches, hỗ trợ kết nối Bluetooth 5.1 và USB-C.",
+                    features: ["Hot-swappable switches", "RGB Backlit", "Bluetooth 5.1", "84 keys layout", "Aluminum frame"],
+                    image: "/images/products/keyboard1.jpg",
+                    specs: {
+                        "Switch": "Gateron Brown (Hot-swappable)",
+                        "Layout": "75% (84 keys)",
+                        "Kết nối": "Bluetooth 5.1 / USB-C",
+                        "Đèn": "RGB Backlit",
+                        "Chất liệu": "Aluminum frame + ABS keycaps"
+                    }
+                },
+                {
+                    id: 2,
+                    name: "Màn hình Dell Ultrasharp U2720Q",
+                    category: "monitor",
+                    price: 8500000,
+                    description: "Màn hình 27 inch 4K UHD với độ chính xác màu 99% sRGB, hoàn hảo cho thiết kế và chỉnh sửa video.",
+                    features: ["4K UHD (3840x2160)", "IPS Panel", "USB-C 90W", "HDR400", "99% sRGB"],
+                    image: "/images/products/monitor1.jpg",
+                    specs: {
+                        "Kích thước": "27 inch",
+                        "Độ phân giải": "4K UHD (3840x2160)",
+                        "Panel": "IPS",
+                        "Tần số quét": "60Hz",
+                        "Cổng kết nối": "USB-C, HDMI, DisplayPort"
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "Ghế công thái học Ergohuman",
+                    "category": "chair",
+                    "price": 4990000,
+                    "description": "Ghế công thái học Ergohuman - Thiết kế hỗ trợ cột sống, siêu êm ái, điều chỉnh đa hướng cho tư thế thoải mái cả ngày.",
+                    "features": [
+                        "Điều chỉnh độ cao linh hoạt",
+                        "Tựa đầu và tựa lưng có thể nghiêng",
+                        "Hỗ trợ cột sống toàn diện",
+                        "Chất liệu lưới thoáng khí",
+                        "Bánh xe 360° chống trầy sàn"
+                    ],
+                    "image": "/images/products/chair1.jpg",
+                    "specs": {
+                        "Chất liệu": "Lưới thoáng khí + Khung nhôm đúc",
+                        "Kích thước": "W 70cm x D 74cm x H 120–132cm",
+                        "Trọng lượng": "~24 kg",
+                        "Tải trọng tối đa": "120 kg",
+                        "Màu sắc": "Đen / Xám",
+                        "Bảo hành": "12 tháng chính hãng",
+                        "Điều chỉnh": "Độ cao ghế, độ nghiêng lưng, hỗ trợ thắt lưng"
+                    }
+                },
+                {
+                    id: 4,
+                    name: "Chuột Logitech MX Master 3S",
+                    category: "monitor",
+                    price: 2190000,
+                    description: "Chuột không dây Bluetooth Logitech MX Master 3s - Yên tĩnh, 8K DPI, Cuộn siêu nhanh, sạc USB-C",
+                    features: ["8000 DPI", "Darkfield cao cấp", "Quiet Clicks", "MagSpeed 1000/s", "Logi Bolt USB receiver"],
+                    image: "/images/products/mouse1.jpg",
+                    specs: {
+                        "Kích thước": "~124.9 mm x 84.3 mm x 51mm",
+                        "Trọng lượng": "~141 g",
+                        "Pin": "70 ngày sau mỗi lần sạc",
+                        "Chuyển đổi máy": "Easy-Switch"
+                    }
+                }
+            ];
+            
+            const product = products.find(p => p.id == productId) || products[0];
+            
+            document.getElementById('productDetail').innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: white; padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); align-items: start;">
+                    <div style="background: #f8fafc; border-radius: var(--radius); padding: 1rem; border: 1px solid #edf2f7;">
+                        <img src="${product.image}" alt="${product.name}" style="width: 100%; height: auto; border-radius: 10px; object-fit: contain;" onerror="this.src='https://placehold.co/600x400?text=Sản+Phẩm+Tech'">
+                    </div>
+                    
+                    <div>
+                        <h1 style="font-size: 2.2rem; color: var(--dark);">${product.name}</h1>
+                        <div style="font-size: 2rem; font-weight: 800; color: #6366f1; margin: 1.5rem 0;">
+                            ${product.price.toLocaleString('vi-VN')}đ
+                        </div>
+                        
+                        <p style="margin: 1.5rem 0; line-height: 1.8; color: #4a5568;">${product.description}</p>
+                        
+                        <div style="margin: 2rem 0; background: #f1f5f9; padding: 1.5rem; border-radius: 12px;">
+                            <h3 style="margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">Thông số kỹ thuật:</h3>
+                            ${Object.entries(product.specs).map(([key, value]) => `
+                                <div style="display: flex; padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1;">
+                                    <div style="flex: 1; font-weight: 600; color: #1e293b;">${key}:</div>
+                                    <div style="flex: 2; color: #475569;">${value}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <button class="btn btn-primary" onclick="handleAddToCart(${product.id}, '${product.name}', ${product.price}, '${product.image}')" style="flex: 2; padding: 1.2rem; font-size: 1.1rem; border-radius: 50px;">
+                                <i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <a href="cart.html" class="btn btn-outline" style="flex: 1; padding: 1.2rem; text-align:center; border-radius: 50px;">
+                                Mua ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Hàm xử lý riêng để không bị lỗi 127.0.0.1 hiển thị xấu xí
+        function handleAddToCart(id, name, price, image) {
+            // Gọi hàm addToCart từ file script.js (nếu có)
+            if (typeof addToCart === 'function') {
+                addToCart(id, name, price, image);
+            } else {
+                // Nếu không có script.js, dùng tạm logic này
+                let cart = JSON.parse(localStorage.getItem('techdecor_cart')) || [];
+                const idx = cart.findIndex(i => i.id === id);
+                if (idx > -1) cart[idx].quantity++;
+                else cart.push({ id, name, price, image, quantity: 1 });
+                localStorage.setItem('techdecor_cart', JSON.stringify(cart));
+                
+                // Cập nhật số trên Header ngay lập tức
+                const countSpan = document.querySelector('.cart-count');
+                if(countSpan) {
+                    const total = cart.reduce((s, i) => s + i.quantity, 0);
+                    countSpan.textContent = total;
+                    countSpan.style.display = 'flex';
+                }
+                alert("✅ Đã thêm sản phẩm vào giỏ!");
+            }
+        }
+    </script>
+</body>
+</html>

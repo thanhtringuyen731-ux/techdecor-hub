@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Copy toàn bộ CSS từ admin.html */
+        .admin-container { display: flex; min-height: 100vh; background: #f8fafc; }
+        .admin-sidebar { width: 250px; background: var(--dark); color: white; position: fixed; height: 100vh; }
+        .admin-logo { padding: 1.5rem; border-bottom: 1px solid #334155; }
+        .admin-logo a { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+        .admin-menu { padding: 1.5rem 0; }
+        .admin-menu a { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; color: #cbd5e1; text-decoration: none; border-left: 4px solid transparent; transition: all 0.3s; }
+        .admin-menu a:hover, .admin-menu a.active { background: #1e293b; color: white; border-left-color: var(--primary); }
+        .admin-main { flex: 1; margin-left: 250px; min-height: 100vh; }
+        .admin-header { background: white; padding: 1.5rem 2rem; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .admin-content { padding: 2rem; }
+        /* ... copy tiếp các CSS cần thiết ... */
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar (giống admin.html) -->
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <a href="index.html">
+                    <i class="fas fa-cube"></i>
+                    <span>TechDecor Hub</span>
+                </a>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Admin Panel</p>
+            </div>
+            
+            <nav class="admin-menu">
+                <a href="admin.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="admin-products.html" class="active">
+                    <i class="fas fa-box"></i>
+                    Quản lý sản phẩm
+                </a>
+                <a href="admin-orders.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    Quản lý đơn hàng
+                </a>
+                <a href="admin-customers.html">
+                    <i class="fas fa-users"></i>
+                    Quản lý khách hàng
+                </a>
+                <a href="admin-categories.html">
+                    <i class="fas fa-tags"></i>
+                    Danh mục
+                </a>
+                <a href="index.html" style="margin-top: 2rem; color: #fca5a5;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Quay về website
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="admin-main">
+            <div class="admin-header">
+                <div>
+                    <h1 style="font-size: 1.5rem;">Quản lý sản phẩm</h1>
+                    <p style="color: var(--gray); margin-top: 0.25rem;">Thêm, sửa, xóa sản phẩm</p>
+                </div>
+            </div>
+            
+            <div class="admin-content">
+                <div style="text-align: center; padding: 3rem;">
+                    <i class="fas fa-box-open" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h2>Trang quản lý sản phẩm</h2>
+                    <p style="color: var(--gray); margin: 1rem 0;">Tính năng chi tiết sẽ được phát triển sau</p>
+                    <a href="admin.html" class="btn btn-primary" style="margin-top: 1rem;">
+                        <i class="fas fa-arrow-left"></i> Quay lại Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

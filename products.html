@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sản phẩm - TechDecor Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #6366f1; --dark: #0f172a; --bg: #f8fafc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
+        .nav-bar { background: white; padding: 15px 0; display: flex; justify-content: center; gap: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top:0; z-index:100; }
+        .nav-bar a { text-decoration: none; color: #64748b; font-weight: 600; padding: 8px 15px; border-radius: 8px; transition: 0.3s; }
+        .nav-bar a:hover { color: var(--primary); background: #f5f3ff; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        #productsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .product-image { width: 100%; height: 200px; background: #eee; position: relative; cursor: pointer; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        .overlay { position: absolute; inset:0; background: rgba(99, 102, 241, 0.4); color: white; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; font-weight: bold; }
+        .product-image:hover .overlay { opacity: 1; }
+        .product-info { padding: 20px; text-align: center; }
+        .badge { background: #eef2ff; color: var(--primary); font-size: 10px; padding: 4px 10px; border-radius: 20px; font-weight: bold; text-transform: uppercase; }
+        .product-price { color: var(--primary); font-weight: 800; font-size: 1.2rem; margin: 15px 0; }
+        .add-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        
+        /* Modal */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+        .modal-content { background: white; max-width: 800px; width: 100%; border-radius: 24px; display: flex; overflow: hidden; position: relative; }
+        .modal-left { flex: 1; background: #f8fafc; }
+        .modal-left img { width: 100%; height: 100%; object-fit: contain; }
+        .modal-right { flex: 1; padding: 40px; }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; }
+        .cart-count { background: #ef4444; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; top: 0; right: -5px; }
+    
+        /* Hiệu ứng thông báo Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6366f1; /* Màu tím Indigo */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            font-weight: bold;
+            animation: slideIn 0.5s ease-out, fadeOut 0.5s 2.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="index.html" style="color:var(--primary); font-weight: 900;">TECHDECOR</a>
+        <a href="products.html?category=all">Tất cả</a>
+        <a href="products.html?category=keyboard">Bàn phím</a>
+        <a href="products.html?category=monitor">Màn hình</a>
+        <a href="products.html?category=chair">Ghế</a>
+        <a href="products.html?category=mouse">Chuột</a>
+        <a href="products.html?category=accessory">Phụ kiện</a>
+        <a href="cart.html" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center;">Thiết bị Setup Chuyên Nghiệp</h1>
+        <div id="productsGrid"></div>
+    </div>
+
+    <div id="productModal" class="modal" onclick="if(event.target==this) closeModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-left"><img id="modalImg" src="" alt=""></div>
+            <div class="modal-right">
+                <span class="badge">Sản phẩm nổi bật</span>
+                <h2 id="modalTitle" style="margin: 15px 0;"></h2>
+                <p id="modalPrice" style="color:var(--primary); font-size: 1.5rem; font-weight: 800;"></p>
+                <p id="modalDesc" style="color:#64748b; line-height: 1.6;"></p>
+                <button class="add-btn" style="margin-top:20px; padding: 15px;" onclick="closeModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
